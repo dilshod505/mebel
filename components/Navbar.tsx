@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Bosh sahifa", href: "/#bosh-sahifa" },
@@ -14,70 +15,72 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="px-24 sticky top-0 z-50 w-full border-b border-white/10 bg-white/50 dark:bg-dark-100/50 backdrop-blur-xl transition-all duration-300">
-      <div className="flex items-center justify-between px-5 py-4 md:px-8">
-        {/* Logo */}
-        <h3 className="text-2xl font-semibold tracking-tight text-gray-900">
-          <span className="font-display text-3xl text-amber-600">Sof</span>{" "}
-          Mebel
-        </h3>
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-gray-200 shadow-sm transition-all duration-300">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex items-center justify-between px-4 py-3 sm:px-6 md:px-8">
+          {/* Logo */}
+          <a href="/" className="flex items-center gap-2 group">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md" />
+              <h1 className="relative text-xl md:text-2xl font-bold tracking-tight">
+                <span className="bg-gradient-to-r from-amber-600 to-amber-500 bg-clip-text text-transparent">
+                  Sof
+                </span>
+                <span className="text-gray-900 dark:text-white"> Mebel</span>
+              </h1>
+            </div>
+          </a>
 
-        {/* Desktop Menu */}
-        <nav className="hidden gap-6 md:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="transition duration-300 hover:text-amber-600"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+          {/* Desktop Menu */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-sm font-medium text-black transition-all duration-300 hover:text-amber-600 dark:hover:text-amber-400 relative group"
+              >
+                {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-600 to-amber-500 transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+          </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          type="button"
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-2xl text-gray-900 md:hidden"
-          aria-label="Menyu"
-          aria-expanded={isMobileMenuOpen}
-        >
-          <svg
-            viewBox="0 0 24 24"
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-amber-600/10 hover:bg-amber-600/20 text-amber-600 dark:text-amber-400 transition-all duration-300 group"
+            aria-label="Menyu"
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
-              <path d="M6 6l12 12M18 6l-12 12" />
+              <X className="w-5 h-5 transition-transform duration-300 group-hover:rotate-180" />
             ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" />
+              <Menu className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
             )}
-          </svg>
-        </button>
-      </div>
+          </button>
+        </div>
 
-      {/* Mobile Menu */}
-      {/* Mobile Menu */}
-      <div
-        className={`md:hidden transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <nav className="w-full rounded-2xl bg-white/80 p-4 text-gray-900 shadow-lg dark:bg-dark-100/80">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="block w-full rounded-xl px-3 py-2 text-base font-medium transition duration-300 hover:bg-amber-100 hover:text-amber-600"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden transition-all duration-300 overflow-hidden border-t border-amber-100/20 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm ${
+            isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav className="flex flex-col divide-y divide-amber-100/20 px-4 py-2">
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="relative group px-3 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 transition-all duration-300 hover:text-amber-600 dark:hover:text-amber-400 flex items-center gap-2"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-600/0 group-hover:bg-amber-600 transition-all duration-300" />
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
       </div>
     </header>
   );
