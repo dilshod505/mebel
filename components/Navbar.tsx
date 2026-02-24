@@ -49,7 +49,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-amber-600/10 hover:bg-amber-600/20 text-amber-600 dark:text-amber-400 transition-all duration-300 group"
+            className="md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-amber-600 hover:bg-amber-600/20 text-white transition-all duration-300 group"
             aria-label="Menyu"
             aria-expanded={isMobileMenuOpen}
           >
@@ -63,7 +63,7 @@ export function Navbar() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden transition-all duration-300 overflow-hidden border-t border-amber-100/20 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm ${
+          className={`md:hidden transition-all duration-300 overflow-hidden border-t border-amber-100/20 bg-white backdrop-blur-sm ${
             isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
