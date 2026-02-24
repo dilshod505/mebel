@@ -60,18 +60,19 @@ export function Navbar() {
       </div>
 
       {/* Mobile Menu */}
+      {/* Mobile Menu */}
       <div
         className={`md:hidden transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="mx-5 mb-4 rounded-2xl bg-white/80 p-4 text-gray-900 shadow-lg dark:bg-dark-100/80">
+        <nav className="w-full rounded-2xl bg-white/80 p-4 text-gray-900 shadow-lg dark:bg-dark-100/80">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="block rounded-xl px-3 py-2 text-base font-medium transition duration-300 hover:bg-amber-100 hover:text-amber-600"
+              className="block w-full rounded-xl px-3 py-2 text-base font-medium transition duration-300 hover:bg-amber-100 hover:text-amber-600"
             >
               {item.label}
             </a>
