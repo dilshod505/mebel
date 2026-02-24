@@ -7,6 +7,7 @@ import { ShowroomSection } from "@/components/ShowroomSection";
 import { CTASection } from "@/components/CTASection";
 import { Footer } from "@/components/Footer";
 import { FeaturedProducts } from "@/components/FeaturedProducts";
+import TopButton from "@/components/Button/Top-btn";
 
 export default function HomePage() {
   return (
@@ -21,6 +22,7 @@ export default function HomePage() {
         <ShowroomSection />
         <CTASection />
         <Footer />
+        <TopButton />
       </div>
     </div>
   );
